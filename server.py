@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+from models import db, Person
 from flask_login import (
     UserMixin,
     LoginManager,
@@ -23,6 +24,35 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["TESTING"] = False
+
+# login config stuff
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login_form"
+
+with app.app_context():
+    """
+    this creates my database models if they havent been made yet
+    """
+    db.create_all()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    """
+    returns the object of the user id turned in
+    """
+
+    return Person.query.get(int(user_id))
+
+
+@app.before_first_request
+def init_app():
+    """
+    making sure user is logged out just in case of cookies
+    """
+
+    logout_user()
 
 
 @app.route("/")
