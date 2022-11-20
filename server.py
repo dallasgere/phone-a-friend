@@ -20,6 +20,9 @@ from flask_login import (
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["TESTING"] = False
 
 
 @app.route("/")
@@ -31,13 +34,23 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/login", methods=["POST", "GET"])
+@app.route("/login_form", methods=["POST", "GET"])
 def login_form():
     """
     this is our form for logging in
     """
 
     return render_template("login_form.html")
+
+
+@login_required
+@app.route("/dashboard", methods=["POST", "GET"])
+def dasshboard():
+    """
+    this is the page that makes our dashboard
+    """
+
+    return render_template("dashboard.html")
 
 
 if __name__ == "__main__":
