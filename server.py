@@ -21,19 +21,21 @@ load_dotenv()
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
     """
     this will be our home page for our project
     """
 
-    return render_template("index.html")\
+    return render_template("index.html")
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login_form():
-    '''
+    """
     this is our form for logging in
-    '''
+    """
 
     return render_template("login_form.html")
 
