@@ -44,6 +44,40 @@ class Person(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     university = db.Column(db.String(80), nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
+    contact_method = db.Column(db.String(80), unique=True, nullable=False)
+
+    def __repr__(self):
+        """
+        idk just good to have
+        """
+        return "<User %r>" % self.username
+
+
+class Post(db.Model):
+    """
+    this is the model of my post database
+    """
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    course = db.Column(db.String(80), unique=True, nullable=False)
+    contact_method = db.Column(db.String(80), unique=True, nullable=False)
+
+    def __repr__(self):
+        """
+        idk just good to have
+        """
+        return "<User %r>" % self.username
+
+
+class Tutor(db.Model):
+    """
+    this is the model of my post database
+    """
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    contact_method = db.Column(db.String(80), unique=True, nullable=False)
 
     def __repr__(self):
         """
@@ -78,7 +112,7 @@ def init_app():
 
 
 @app.route("/")
-def index():
+def welcome_page():
     """
     this will be our home page for our project
     """

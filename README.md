@@ -24,3 +24,8 @@
 * School id
 * Tutor Rank
 * Tutor Reviews
+
+## more database stuff
+* database to make post
+* database to make user
+* database to make tutor
