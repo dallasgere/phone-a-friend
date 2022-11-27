@@ -184,6 +184,15 @@ def find_a_friend():
 
     return render_template("find_a_friend.html")
 
+@app.route("/become_a_friend", methods=["POST", "GET"])
+@login_required
+def become_a_friend():
+    """
+    this is the page allows users to become tutors
+    """
+
+    return render_template("become_a_friend.html")
+
 if __name__ == "__main__":
     """
     this is the 'main function' which runs our app
