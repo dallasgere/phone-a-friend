@@ -201,7 +201,29 @@ def find_a_friend():
     this is the page allows users to find tutors
     """
 
-    return render_template("find_a_friend.html")
+    subjects = []
+    names = []
+    contacts = []
+
+    if request.method == "POST":
+
+        course = request.form.get("subject")
+        # subjects = []
+        # names = []
+        # contacts = []
+
+        for i in Post.query.filter_by(course=course):
+            subjects.append(i.course)
+            names.append(i.name)
+            contacts.append(i.contact.method)
+
+        return render_template(
+            "find_a_friend.html", subjects=subjects, names=names, contacts=contacts
+        )
+
+    return render_template(
+        "find_a_friend.html", subjects=subjects, names=names, contacts=contacts
+    )
 
 
 @app.route("/become_a_friend", methods=["POST", "GET"])
@@ -221,7 +243,7 @@ def become_a_friend():
         db.session.add(new_post)
         db.session.commit()
 
-        return redirect(url_for("find_a_"))
+        return redirect(url_for("find_a_friend"))
 
     return render_template("become_a_friend.html")
 
