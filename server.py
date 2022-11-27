@@ -163,13 +163,21 @@ def dashboard():
 
 @app.route("/account_settings", methods=["POST", "GET"])
 @login_required
-def dashboard():
+def account_settings():
     """
     this is the page that makes the users account settings
     """
 
     return render_template("account_settings.html")
 
+@app.route("/find_a_friend", methods=["POST", "GET"])
+@login_required
+def find_a_friend():
+    """
+    this is the page allows users to find tutors
+    """
+
+    return render_template("find_a_friend.html")
 
 if __name__ == "__main__":
     """
