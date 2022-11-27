@@ -2,7 +2,7 @@
 this is our server file with all our routes and config stuff
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, url_for, redirect
 from flask_login import login_required
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -49,6 +49,8 @@ class Person(UserMixin, db.Model):
         idk just good to have
         """
         return "<User %r>" % self.username
+
+
 
 
 with app.app_context():
@@ -99,7 +101,26 @@ def signup():
     """
     this is our form for sign-up
     """
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        university = request.form.get('university')
+        password = request.form.get('password')
+        password2 = request.form.get('password2')
 
+        if password != password2:
+            flash('Password does not match.', category="error")
+        # add elif to check if username exist
+        # Read about bootstrap flash
+        else:
+            new_user = Person(username=username, 
+                              email=email, 
+                              university=university,
+                              password=password)
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('login'))
+            
     return render_template("sign-up.html")
 
 
