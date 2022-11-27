@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Find a friend.</title>
+    <title>Manage Listings</title>
   </head>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -25,7 +25,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
-            <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{{url_for('find_a_friend')}}">Find a Friend</a></li>
               <li><a class="dropdown-item" href="{{url_for('become_a_friend')}}">Become a Friend</a></li>
               <li><hr class="dropdown-divider"></li>
@@ -33,7 +33,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('account_settings')}}">Account Settings</a>
+            <a class="nav-link active" href="{{url_for('account_settings')}}">Account Settings</a>
           </li>
           <li class="nav-item">
             <b><a style="color:red" class="nav-link" href="{{url_for('logout')}}" tabindex="-1" aria="true">Logout</a></b>
@@ -47,7 +47,7 @@
     </div>
   </nav>
   <body>
-    <h1>Find a friend.</h1>
+    <h1>Manage Listings</h1>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

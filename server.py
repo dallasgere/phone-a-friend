@@ -141,7 +141,7 @@ def logout():
     Logs user out and redirects to login page
     """
     logout_user()
-    return redirect(url_for("log_in"))
+    return redirect(url_for("login"))
 
 
 @app.route("/sign-up", methods=["POST", "GET"])
@@ -211,6 +211,15 @@ def become_a_friend():
     """
 
     return render_template("become_a_friend.html")
+
+@app.route("/manage_listings", methods=["POST", "GET"])
+@login_required
+def manage_listings():
+    """
+    this is the page allows tutors to manage listings
+    """
+
+    return render_template("manage_listings.html")
 
 if __name__ == "__main__":
     """
