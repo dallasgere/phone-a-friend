@@ -40,10 +40,10 @@ class Person(UserMixin, db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=True, nullable=False)
-    university = db.Column(db.String(80), nullable=False)
+    username = db.Column(db.String(120), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(120), unique=True, nullable=False)
+    university = db.Column(db.String(120), nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
     tutored_classes = db.relationship("Tutor")
 
@@ -60,9 +60,9 @@ class Post(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-    course = db.Column(db.String(80), unique=True, nullable=False)
-    contact_method = db.Column(db.String(80), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    course = db.Column(db.String(120), unique=True, nullable=False)
+    contact_method = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
         """
@@ -74,8 +74,8 @@ class Post(db.Model):
 class Tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("person.id"))
-    course_id = db.Column(db.String(80), nullable=False)
-    phone_number = db.Column(db.String(80), nullable=False)
+    course_id = db.Column(db.String(120), nullable=False)
+    phone_number = db.Column(db.String(120), nullable=False)
 
 
 with app.app_context():
