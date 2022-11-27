@@ -82,16 +82,26 @@ def index():
     this will be our home page for our project
     """
 
-    return render_template("index.html")
+    return render_template("index2.html")
 
 
-@app.route("/login_form", methods=["POST", "GET"])
-def login_form():
+@app.route("/login", methods=["POST", "GET"])
+def login():
     """
     this is our form for logging in
     """
 
-    return render_template("login_form.html")
+    return render_template("login.html")
+
+
+@app.route("/sign-up", methods=["POST", "GET"])
+def signup():
+    """
+    this is our form for sign-up
+    """
+
+    return render_template("sign-up.html")
+
 
 
 @app.route("/dashboard", methods=["POST", "GET"])
