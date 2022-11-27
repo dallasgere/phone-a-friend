@@ -41,7 +41,7 @@ class Person(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    #email = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=True, nullable=False)
     university = db.Column(db.String(80), nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
@@ -131,7 +131,7 @@ def signup():
     """
     if request.method == 'POST':
         username = request.form.get('username')
-        #email = request.form.get('user_email')
+        email = request.form.get('user_email')
         university = request.form.get('university')
         password = request.form.get('password')
         password2 = request.form.get('password2')
@@ -142,7 +142,7 @@ def signup():
         # Read about bootstrap flash
         else:
             new_user = Person(username=username, 
-                              #email=email, 
+                              email=email, 
                               university=university,
                               password=generate_password_hash(password, method="sha256"))
             db.session.add(new_user)
