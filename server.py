@@ -161,6 +161,15 @@ def dashboard():
 
     return render_template("dashboard.html")
 
+@app.route("/account_settings", methods=["POST", "GET"])
+@login_required
+def dashboard():
+    """
+    this is the page that makes the users account settings
+    """
+
+    return render_template("account_settings.html")
+
 
 if __name__ == "__main__":
     """
