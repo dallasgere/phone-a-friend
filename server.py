@@ -124,7 +124,6 @@ def signup():
     return render_template("sign-up.html")
 
 
-
 @app.route("/dashboard", methods=["POST", "GET"])
 @login_required
 def dasshboard():
