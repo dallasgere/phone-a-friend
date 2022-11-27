@@ -45,7 +45,7 @@ class Person(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     university = db.Column(db.String(80), nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
-    tutored_classes = db.relationship('Tutor')
+    tutored_classes = db.relationship("Tutor")
 
     def __repr__(self):
         """
@@ -53,9 +53,10 @@ class Person(UserMixin, db.Model):
         """
         return "<User %r>" % self.username
 
+
 class Tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('person.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey("person.id"))
     course_id = db.Column(db.String(80), nullable=False)
     phone_number = db.Column(db.String(80), nullable=False)
 
@@ -90,7 +91,7 @@ def index():
     """
     this will be our home page for our project
     """
-    
+
     return render_template("index2.html")
 
 
@@ -99,56 +100,60 @@ def login():
     """
     this is our form for logging in
     """
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
 
         person = Person.query.filter_by(username=username).first()
         if person:
             if check_password_hash(person.password, password):
                 print("loged in")
                 login_user(person, remember=True)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for("dashboard"))
             else:
-                print("wrong password!") 
+                print("wrong password!")
                 # Read about bootstrap flash
 
     return render_template("login.html")
 
-@app.route('/logout', methods=['GET', 'POST'])
+
+@app.route("/logout", methods=["GET", "POST"])
 @login_required
 def logout():
-    '''
+    """
     Logs user out and redirects to login page
-    '''
+    """
     logout_user()
-    return redirect(url_for('log_in'))
+    return redirect(url_for("log_in"))
+
 
 @app.route("/sign-up", methods=["POST", "GET"])
 def signup():
     """
     this is our form for sign-up
     """
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('user_email')
-        university = request.form.get('university')
-        password = request.form.get('password')
-        password2 = request.form.get('password2')
+    if request.method == "POST":
+        username = request.form.get("username")
+        email = request.form.get("user_email")
+        university = request.form.get("university")
+        password = request.form.get("password")
+        password2 = request.form.get("password2")
 
         if password != password2:
-            flash('Password does not match.', category="error")
+            flash("Password does not match.", category="error")
         # add elif to check if username exist
         # Read about bootstrap flash
         else:
-            new_user = Person(username=username, 
-                              email=email, 
-                              university=university,
-                              password=generate_password_hash(password, method="sha256"))
+            new_user = Person(
+                username=username,
+                email=email,
+                university=university,
+                password=generate_password_hash(password, method="sha256"),
+            )
             db.session.add(new_user)
             db.session.commit()
-            return redirect(url_for('login'))
-            
+            return redirect(url_for("login"))
+
     return render_template("sign-up.html")
 
 
