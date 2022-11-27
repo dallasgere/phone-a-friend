@@ -54,6 +54,23 @@ class Person(UserMixin, db.Model):
         return "<User %r>" % self.username
 
 
+class Post(db.Model):
+    """
+    this is the model of my post database
+    """
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=True, nullable=False)
+    course = db.Column(db.String(80), unique=True, nullable=False)
+    contact_method = db.Column(db.String(80), unique=True, nullable=False)
+
+    def __repr__(self):
+        """
+        idk just good to have
+        """
+        return "<User %r>" % self.username
+
+
 class Tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("person.id"))
@@ -166,6 +183,7 @@ def dashboard():
 
     return render_template("dashboard.html")
 
+
 @app.route("/account_settings", methods=["POST", "GET"])
 @login_required
 def account_settings():
@@ -175,6 +193,7 @@ def account_settings():
 
     return render_template("account_settings.html")
 
+
 @app.route("/find_a_friend", methods=["POST", "GET"])
 @login_required
 def find_a_friend():
@@ -183,6 +202,7 @@ def find_a_friend():
     """
 
     return render_template("find_a_friend.html")
+
 
 if __name__ == "__main__":
     """
