@@ -203,6 +203,7 @@ def find_a_friend():
 
     return render_template("find_a_friend.html")
 
+
 @app.route("/become_a_friend", methods=["POST", "GET"])
 @login_required
 def become_a_friend():
@@ -210,7 +211,20 @@ def become_a_friend():
     this is the page allows users to become tutors
     """
 
+    if request.method == "POST":
+        subject = request.form.get("subject")
+        name = request.form.get("name")
+        contact = request.form.get("contact")
+
+        new_post = Post(name=name, course=subject, contact_method=contact)
+
+        db.session.add(new_post)
+        db.session.commit()
+
+        return redirect(url_for("find_a_"))
+
     return render_template("become_a_friend.html")
+
 
 @app.route("/manage_listings", methods=["POST", "GET"])
 @login_required
@@ -221,8 +235,10 @@ def manage_listings():
 
     return render_template("manage_listings.html")
 
+
 if __name__ == "__main__":
     """
+    this
     this is the 'main function' which runs our app
     """
 
