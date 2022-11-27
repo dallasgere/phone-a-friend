@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import (
     UserMixin,
     LoginManager,
@@ -43,6 +44,7 @@ class Person(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     university = db.Column(db.String(80), nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
+    tutored_classes = db.relationship('Tutor')
 
     def __repr__(self):
         """
@@ -50,7 +52,11 @@ class Person(UserMixin, db.Model):
         """
         return "<User %r>" % self.username
 
-
+class Tutor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('person.id'))
+    course_id = db.Column(db.String(80), nullable=False)
+    phone_number = db.Column(db.String(80), nullable=False)
 
 
 with app.app_context():
@@ -116,7 +122,7 @@ def signup():
             new_user = Person(username=username, 
                               email=email, 
                               university=university,
-                              password=password)
+                              password=generate_password_hash(password, method="sha256"))
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for('login'))
