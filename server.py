@@ -63,6 +63,7 @@ class Post(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     course = db.Column(db.String(120), unique=True, nullable=False)
     contact_method = db.Column(db.String(120), unique=True, nullable=False)
+    university = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
         """
@@ -238,7 +239,7 @@ def become_a_friend():
         name = request.form.get("name")
         contact = request.form.get("contact")
 
-        new_post = Post(name=name, course=subject, contact_method=contact)
+        new_post = Post(name=name, course=subject, contact_method=contact, university=current_user.university)
 
         db.session.add(new_post)
         db.session.commit()
