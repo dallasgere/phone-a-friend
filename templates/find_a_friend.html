@@ -107,9 +107,10 @@
       {% if subjects %}
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Name</th>
+            <th scope="col">school</th>
+            <th scope="col">contact method</th>
         </tr>
       {% endif %}
       {% if subjects %}
@@ -117,6 +118,7 @@
                 <th scope="row">{{i}}</th>
                 <td>{{subjects[i]}}</td>
                 <td>{{names[i]}}</td>
+                <td>{{schools[i]}}</td>
                 <td>{{contacts[i]}}</td>
           {%  endfor %}
       {% endif %}

@@ -63,6 +63,7 @@ class Post(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     course = db.Column(db.String(120), unique=True, nullable=False)
     contact_method = db.Column(db.String(120), unique=True, nullable=False)
+    university = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
         """
@@ -203,6 +204,7 @@ def find_a_friend():
     subjects = []
     names = []
     contacts = []
+    schools = []
 
     if request.method == "POST":
 
@@ -212,6 +214,7 @@ def find_a_friend():
             subjects.append(i.course)
             names.append(i.name)
             contacts.append(i.contact_method)
+            schools.append(i.university)
 
         size = len(subjects)
 
@@ -221,10 +224,11 @@ def find_a_friend():
             names=names,
             contacts=contacts,
             size=size,
+            schools=schools
         )
 
     return render_template(
-        "find_a_friend.html", subjects=subjects, names=names, contacts=contacts
+        "find_a_friend.html", subjects=subjects, names=names, contacts=contacts, schools=schools
     )
 
 
