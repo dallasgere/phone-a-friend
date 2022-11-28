@@ -97,9 +97,9 @@
     </div>
 
     <table class="table">
-  <thead>
-  </thead>
-  <tbody>
+    <thead>
+    </thead>
+    <tbody>
     <tr>
         {% if not subjects %}
 {#          <h2>there are no posts matching </h2>#}
@@ -115,7 +115,7 @@
       {% endif %}
       {% if subjects %}
           {%  for i in range(size) %}
-                <th scope="row">{{i}}</th>
+                <th scope="row">{{i + 1}}</th>
                 <td>{{subjects[i]}}</td>
                 <td>{{names[i]}}</td>
                 <td>{{schools[i]}}</td>
@@ -123,7 +123,7 @@
           {%  endfor %}
       {% endif %}
     </tr>
-  </tbody>
-</table>
+    </tbody>
+    </table>
   </body>
 </html>
