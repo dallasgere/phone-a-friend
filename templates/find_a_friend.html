@@ -96,20 +96,69 @@
         </main>
     </div>
 
-    <div class="post display">
-      {% if not subjects %}
-          <h2>look up other POSTS</h2>
+    <table class="table">
+  <thead>
+{#    <tr>#}
+{#      <th scope="col">#</th>#}
+{#      <th scope="col">First</th>#}
+{#      <th scope="col">Last</th>#}
+{#      <th scope="col">Handle</th>#}
+{#    </tr>#}
+  </thead>
+  <tbody>
+    <tr>
+        {% if not subjects %}
+{#          <h2>there are no posts matching </h2>#}
       {% endif %}
       {% if subjects %}
-          <h2>posts!!!!</h2>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
       {% endif %}
       {% if subjects %}
           {%  for i in range(size) %}
-            <p>{{subjects[i]}}</p>
-            <p>{{names[i]}}</p>
-            <p>{{contacts[i]}}</p>
+                <th scope="row">{{i}}i</th>
+                <td>{{subjects[i]}}</td>
+                <td>{{names[i]}}</td>
+                <td>{{contacts[i]}}</td>
           {%  endfor %}
       {% endif %}
-  </div>
+{#      <th scope="row">1</th>#}
+{#      <td>Mark</td>#}
+{#      <td>Otto</td>#}
+{#      <td>@mdo</td>#}
+    </tr>
+{#    <tr>#}
+{#      <th scope="row">2</th>#}
+{#      <td>Jacob</td>#}
+{#      <td>Thornton</td>#}
+{#      <td>@fat</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <th scope="row">3</th>#}
+{#      <td colspan="2">Larry the Bird</td>#}
+{#      <td>@twitter</td>#}
+{#    </tr>#}
+  </tbody>
+</table>
+
+{#    <div class="post display">#}
+{#      {% if not subjects %}#}
+{#          <h2>look up other POSTS</h2>#}
+{#      {% endif %}#}
+{#      {% if subjects %}#}
+{#          <h2>posts!!!!</h2>#}
+{#      {% endif %}#}
+{#      {% if subjects %}#}
+{#          {%  for i in range(size) %}#}
+{#            <p>{{subjects[i]}}</p>#}
+{#            <p>{{names[i]}}</p>#}
+{#            <p>{{contacts[i]}}</p>#}
+{#          {%  endfor %}#}
+{#      {% endif %}#}
+{#  </div>#}
   </body>
 </html>
