@@ -191,6 +191,17 @@ def account_settings():
     this is the page that makes the users account settings
     """
 
+    id = ""
+    username = ""
+    email = ""
+    password = ""
+    university = ""
+    is_tutor = ""
+
+    for i in Person.query.filter_by(username=current_user.username):
+        id = i
+        user
+
     return render_template("account_settings.html")
 
 
@@ -203,6 +214,7 @@ def find_a_friend():
 
     return render_template("find_a_friend.html")
 
+
 @app.route("/become_a_friend", methods=["POST", "GET"])
 @login_required
 def become_a_friend():
@@ -212,6 +224,7 @@ def become_a_friend():
 
     return render_template("become_a_friend.html")
 
+
 @app.route("/manage_listings", methods=["POST", "GET"])
 @login_required
 def manage_listings():
@@ -220,6 +233,7 @@ def manage_listings():
     """
 
     return render_template("manage_listings.html")
+
 
 if __name__ == "__main__":
     """
