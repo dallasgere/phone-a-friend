@@ -239,7 +239,12 @@ def become_a_friend():
         name = request.form.get("name")
         contact = request.form.get("contact")
 
-        new_post = Post(name=name, course=subject, contact_method=contact, university=current_user.university)
+        new_post = Post(
+            name=name,
+            course=subject,
+            contact_method=contact,
+            university=current_user.university,
+        )
 
         db.session.add(new_post)
         db.session.commit()
