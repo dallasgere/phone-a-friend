@@ -17,7 +17,7 @@
         * University
             * Classes -> Course #, name
     
-* Find API to use
+* Find API to use 
 
 
 ## Non MVP tasks
