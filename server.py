@@ -40,10 +40,10 @@ class Person(UserMixin, db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(120), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), unique=True, nullable=False)
-    university = db.Column(db.String(120), nullable=False)
+    username = db.Column(db.String(120), unique=False, nullable=False)
+    email = db.Column(db.String(120), unique=False, nullable=False)
+    password = db.Column(db.String(120), unique=False, nullable=False)
+    university = db.Column(db.String(120), unique=False, nullable=False)
     is_tutor = db.Column(db.Boolean, default=False, nullable=False)
     tutored_classes = db.relationship("Tutor")
 
