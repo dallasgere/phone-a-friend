@@ -201,8 +201,36 @@ def find_a_friend():
     """
     this is the page allows users to find tutors
     """
+    subjects = []
+    names = []
+    contacts = []
+    schools = []
 
-    return render_template("find_a_friend.html")
+    if request.method == "POST":
+
+        course = request.form.get("subject")
+
+        for i in Post.query.filter_by(course=course):
+            subjects.append(i.course)
+            names.append(i.name)
+            contacts.append(i.contact_method)
+            schools.append(i.university)
+
+        size = len(subjects)
+
+        return render_template(
+            "find_a_friend.html",
+            subjects=subjects,
+            names=names,
+            contacts=contacts,
+            size=size,
+            schools=schools
+        )
+
+    return render_template(
+        "find_a_friend.html", subjects=subjects, names=names, contacts=contacts, schools=schools
+    )
+
 
 
 @app.route("/become_a_friend", methods=["POST", "GET"])
