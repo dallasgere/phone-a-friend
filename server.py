@@ -193,14 +193,36 @@ def account_settings():
     Testing Branch
     """
 
-    if request.method == "POST":
-        pass
-
     i = Person.query.get(current_user.id)
     username = i.username
     email = i.email
     password = i.password
     university = i.university
+
+    if request.method == "POST":
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if username == "":
+            username = i.username
+        if email == "":
+            email = i.email
+        if password == "":
+            password = i.password
+
+        new_credentials = Person(
+            username=username,
+            email=email,
+            university=university,
+            password=generate_password_hash(password, method="sha256"),
+        )
+
+        db.session.add(new_credentials)
+        db.session.delete(i)
+        db.session.commit()
+
+        return redirect(url_for("logout"))
 
     return render_template(
         "account_settings.html",
