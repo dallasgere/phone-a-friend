@@ -224,13 +224,16 @@ def find_a_friend():
             names=names,
             contacts=contacts,
             size=size,
-            schools=schools
+            schools=schools,
         )
 
     return render_template(
-        "find_a_friend.html", subjects=subjects, names=names, contacts=contacts, schools=schools
+        "find_a_friend.html",
+        subjects=subjects,
+        names=names,
+        contacts=contacts,
+        schools=schools,
     )
-
 
 
 @app.route("/become_a_friend", methods=["POST", "GET"])
