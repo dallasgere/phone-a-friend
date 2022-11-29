@@ -191,18 +191,19 @@ def account_settings():
     this is the page that makes the users account settings
     """
 
-    id = ""
-    username = ""
-    email = ""
-    password = ""
-    university = ""
-    is_tutor = ""
-
     for i in Person.query.filter_by(username=current_user.username):
-        id = i
-        user
+        username = i.username
+        email = i.email
+        password = i.password
+        university = i.university
 
-    return render_template("account_settings.html")
+    return render_template(
+        "account_settings.html",
+        name=username,
+        email=email,
+        password=password,
+        university=university,
+    )
 
 
 @app.route("/find_a_friend", methods=["POST", "GET"])
