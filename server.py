@@ -60,10 +60,10 @@ class Post(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    course = db.Column(db.String(120), unique=True, nullable=False)
-    contact_method = db.Column(db.String(120), unique=True, nullable=False)
-    university = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
+    course = db.Column(db.String(120), unique=False, nullable=False)
+    contact_method = db.Column(db.String(120), unique=False, nullable=False)
+    university = db.Column(db.String(120), unique=False, nullable=False)
 
     def __repr__(self):
         """
