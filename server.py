@@ -60,9 +60,10 @@ class Post(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    course = db.Column(db.String(120), unique=True, nullable=False)
-    contact_method = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
+    course = db.Column(db.String(120), unique=False, nullable=False)
+    contact_method = db.Column(db.String(120), unique=False, nullable=False)
+    university = db.Column(db.String(120), unique=False, nullable=False)
 
     def __repr__(self):
         """
@@ -203,6 +204,7 @@ def find_a_friend():
 
     return render_template("find_a_friend.html")
 
+
 @app.route("/become_a_friend", methods=["POST", "GET"])
 @login_required
 def become_a_friend():
@@ -210,7 +212,25 @@ def become_a_friend():
     this is the page allows users to become tutors
     """
 
+    if request.method == "POST":
+        subject = request.form.get("subject")
+        name = request.form.get("name")
+        contact = request.form.get("contact")
+
+        new_post = Post(
+            name=name,
+            course=subject,
+            contact_method=contact,
+            university=current_user.university,
+        )
+
+        db.session.add(new_post)
+        db.session.commit()
+
+        return redirect(url_for("find_a_friend"))
+
     return render_template("become_a_friend.html")
+
 
 @app.route("/manage_listings", methods=["POST", "GET"])
 @login_required
@@ -221,8 +241,10 @@ def manage_listings():
 
     return render_template("manage_listings.html")
 
+
 if __name__ == "__main__":
     """
+    this
     this is the 'main function' which runs our app
     """
 
