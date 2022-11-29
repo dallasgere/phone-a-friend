@@ -193,11 +193,14 @@ def account_settings():
     Testing Branch
     """
 
-    for i in Person.query.filter_by(username=current_user.username):
-        username = i.username
-        email = i.email
-        password = i.password
-        university = i.university
+    if request.method == "POST":
+        pass
+
+    i = Person.query.get(current_user.id)
+    username = i.username
+    email = i.email
+    password = i.password
+    university = i.university
 
     return render_template(
         "account_settings.html",
