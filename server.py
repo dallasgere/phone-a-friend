@@ -200,9 +200,10 @@ def account_settings():
     university = i.university
 
     if request.method == "POST":
-        username = request.form.get("username")
-        email = request.form.get("email")
-        password = request.form.get("password")
+        if request.args.get("f") == "f1":
+            username = request.form.get("username")
+        #elif request.args.get("f") == "f2":
+            #email = 
 
         if username == "":
             username = i.username
