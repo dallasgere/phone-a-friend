@@ -104,8 +104,8 @@
     </thead>
     <tbody>
     <tr>
-        {% if not subjects %}
-{#          <h2>there are no posts matching </h2>#}
+      {% if not subjects %}
+        {#<h2>there are no posts matching </h2>#}
       {% endif %}
       {% if subjects %}
           <tr>
@@ -117,13 +117,13 @@
         </tr>
       {% endif %}
       {% if subjects %}
-          {%  for i in range(size) %}
-                <th scope="row">{{i + 1}}</th>
-                <td>{{subjects[i]}}</td>
-                <td>{{names[i]}}</td>
-                <td>{{schools[i]}}</td>
-                <td>{{contacts[i]}}</td>
-          {%  endfor %}
+        {%  for i in range(size) %}
+          <th scope="row">{{i + 1}}</th>
+          <td>{{subjects[i]}}</td>
+          <td>{{names[i]}}</td>
+          <td>{{schools[i]}}</td>
+          <td>{{contacts[i]}}</td>
+        {%  endfor %}
       {% endif %}
     </tr>
     </tbody>
