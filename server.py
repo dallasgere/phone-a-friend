@@ -193,28 +193,28 @@ def account_settings():
     Testing Branch
     """
 
-    # i = Person.query.get(current_user.id)
-    # username = i.username
-    # email = i.email
-    # password = i.password
-    # university = i.university
+    i = Person.query.get(current_user.id)
+    username = i.username
+    email = i.email
+    password = i.password
+    university = i.university
 
     if request.method == "POST":
-        if request.args.get("f") == "f1":
+        if request.args["f"] == "f1":
             username = request.form.get("username")
-            updated_data = Person.query.filter_by(
+            updated_username = Person.query.filter_by(
                 username=current_user.username
             ).update(dict(username=username))
             db.session.commit()
-        elif request.args.get("f") == "f2":
+        elif request.args["f"] == "f2":
             university = request.form.get("university")
-            updated_data = Person.query.filter_by(
+            updated_university = Person.query.filter_by(
                 username=current_user.username
             ).update(dict(university=university))
             db.session.commit()
         else:
             password = request.form.get("password")
-            updated_data = Person.query.filter_by(
+            updated_password = Person.query.filter_by(
                 username=current_user.username
             ).update(dict(password=password))
             db.session.commit()
