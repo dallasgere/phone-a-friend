@@ -193,35 +193,31 @@ def account_settings():
     Testing Branch
     """
 
-    i = Person.query.get(current_user.id)
-    username = i.username
-    email = i.email
-    password = i.password
-    university = i.university
+    # i = Person.query.get(current_user.id)
+    # username = i.username
+    # email = i.email
+    # password = i.password
+    # university = i.university
 
     if request.method == "POST":
         if request.args.get("f") == "f1":
             username = request.form.get("username")
-        #elif request.args.get("f") == "f2":
-            #email = 
-
-        if username == "":
-            username = i.username
-        if email == "":
-            email = i.email
-        if password == "":
-            password = i.password
-
-        new_credentials = Person(
-            username=username,
-            email=email,
-            university=university,
-            password=generate_password_hash(password, method="sha256"),
-        )
-
-        db.session.add(new_credentials)
-        db.session.delete(i)
-        db.session.commit()
+            updated_data = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(username=username))
+            db.session.commit()
+        elif request.args.get("f") == "f2":
+            university = request.form.get("university")
+            updated_data = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(university=university))
+            db.session.commit()
+        else:
+            password = request.form.get("password")
+            updated_data = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(password=password))
+            db.session.commit()
 
         return redirect(url_for("logout"))
 
