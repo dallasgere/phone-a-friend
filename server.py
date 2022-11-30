@@ -212,9 +212,9 @@ def account_settings():
                 username=current_user.username
             ).update(dict(university=university))
             db.session.commit()
-        else:
+        elif request.args["f"] == "f3":
             password = request.form.get("password")
-            updated_password = Person.query.filter_by(
+            updated_university = Person.query.filter_by(
                 username=current_user.username
             ).update(dict(password=password))
             db.session.commit()
