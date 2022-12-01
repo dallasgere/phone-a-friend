@@ -237,10 +237,21 @@ def find_a_friend():
     """
     this is the page allows users to find tutors
     """
+
+    posts = Post.query.all()
+    subs = []
     subjects = []
     names = []
     contacts = []
     schools = []
+
+    size = len(posts)
+
+    for post in posts:
+        subs.append(post.course)
+        names.append(post.name)
+        contacts.append(post.contact_method)
+        schools.append(post.university)
 
     if request.method == "POST":
 
@@ -259,16 +270,17 @@ def find_a_friend():
             subjects=subjects,
             names=names,
             contacts=contacts,
-            size=size,
             schools=schools,
+            size=size,
         )
 
     return render_template(
         "find_a_friend.html",
-        subjects=subjects,
+        subs=subs,
         names=names,
         contacts=contacts,
         schools=schools,
+        size=size,
     )
 
 

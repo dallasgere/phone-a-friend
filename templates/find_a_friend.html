@@ -27,6 +27,9 @@
       form {
           max-width: 480px;
       }
+      p {
+        text-align: center;
+      }
 
   </style>
 
@@ -92,8 +95,21 @@
     <thead>
     </thead>
     <tbody>
-      {% if not subjects %}
-        {#<h2>there are no posts matching </h2>#}
+      {% if subs %}
+        <p>
+          Displaying every post, 
+          you can make a search by 
+          course to narrow down posts
+        </p>
+        {%  for i in range(size) %}
+          <tr>
+          <td class="px-3" scope="row">{{i + 1}}</td>
+          <td class="px-3">{{subs[i]}}</td>
+          <td class="px-3">{{names[i]}}</td>
+          <td class="px-3">{{schools[i]}}</td>
+          <td class="px-3">{{contacts[i]}}</td>
+          </tr>
+        {%  endfor %}
       {% endif %}
       {% if subjects %}
         <tr>
