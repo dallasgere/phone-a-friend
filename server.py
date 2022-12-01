@@ -281,7 +281,7 @@ def become_a_friend():
 
     if request.method == "POST":
         subject = request.form.get("subject")
-        name = request.form.get("name")
+        name = current_user.username
         contact = request.form.get("contact")
 
         new_post = Post(
