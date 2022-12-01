@@ -214,9 +214,10 @@ def account_settings():
             db.session.commit()
         elif request.args["f"] == "f3":
             password = request.form.get("password")
+            password2 = generate_password_hash(password, method="sha256")
             updated_university = Person.query.filter_by(
                 username=current_user.username
-            ).update(dict(password=password))
+            ).update(dict(password=password2))
             db.session.commit()
 
         return redirect(url_for("logout"))
