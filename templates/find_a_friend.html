@@ -109,11 +109,11 @@
       {% if subjects %}
         {%  for i in range(size) %}
           <tr>
-          <td scope="row">{{i + 1}}</td>
-          <td>{{subjects[i]}}</td>
-          <td>{{names[i]}}</td>
-          <td>{{schools[i]}}</td>
-          <td>{{contacts[i]}}</td>
+          <td class="px-3" scope="row">{{i + 1}}</td>
+          <td class="px-3">{{subjects[i]}}</td>
+          <td class="px-3">{{names[i]}}</td>
+          <td class="px-3">{{schools[i]}}</td>
+          <td class="px-3">{{contacts[i]}}</td>
           </tr>
         {%  endfor %}
       {% endif %}
