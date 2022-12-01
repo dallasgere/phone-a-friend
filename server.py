@@ -239,19 +239,24 @@ def find_a_friend():
     """
 
     posts = Post.query.all()
-    subs = []
+
     subjects = []
     names = []
     contacts = []
     schools = []
 
-    size = len(posts)
+    subs = []
+    names_two = []
+    contacts_two = []
+    schools_two = []
+
+    size_two = len(posts)
 
     for post in posts:
         subs.append(post.course)
-        names.append(post.name)
-        contacts.append(post.contact_method)
-        schools.append(post.university)
+        names_two.append(post.name)
+        contacts_two.append(post.contact_method)
+        schools_two.append(post.university)
 
     if request.method == "POST":
 
@@ -277,10 +282,10 @@ def find_a_friend():
     return render_template(
         "find_a_friend.html",
         subs=subs,
-        names=names,
-        contacts=contacts,
-        schools=schools,
-        size=size,
+        names=names_two,
+        contacts=contacts_two,
+        schools=schools_two,
+        size=size_two,
     )
 
 
