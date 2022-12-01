@@ -9,7 +9,7 @@
 ### Dallas's pull requests
 * URL is (https://github.com/dallasgere/phone-a-friend/pull/4)
 * URL is (https://github.com/dallasgere/phone-a-friend/pull/7)
-## link to docs proposal (https://docs.google.com/document/d/1ISBmw38HiZxh5jmMCCMTQCluN-TCw0zrrTu_mQKMrNU/edit?usp=sharing)
+### link to docs proposal (https://docs.google.com/document/d/1ISBmw38HiZxh5jmMCCMTQCluN-TCw0zrrTu_mQKMrNU/edit?usp=sharing)
 
 ## two things we enjoyed
 * We really enjoyed getting to use bootstrap and trying to make our project better looking. The last few websites did not look very well and it was nice to use a new tool and work together to build something that we our proud to put on our resumes
@@ -19,7 +19,11 @@
 * Git was a little hectic at times and could prove to be challenging. We usually did all our merges in the same room together but this is something that could get really challenging if we werent together.
 * React was something we were hoping to get to use on this project, however we felt we didnt have the skills necessary to build the project with react and finish on time so we just stuck to our same ways of doing things, however it would be nice to learn react eventually
 
-##Technical Requirements
+## Technical Requirements
+1. A flask server
+2. A Postgres SQL database
+3. Beautification with bootstrap
+4. User login
 
 
 
