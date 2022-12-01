@@ -20,6 +20,7 @@
 * Find API to use 
 
 
+# link to the github (https://github.com/dallasgere/phone-a-friend)
 ## Non MVP tasks
 * Profile Pictures
 * School id
