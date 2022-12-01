@@ -30,7 +30,7 @@
   </style>
 
   </head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for('dashboard') }}">Phone A Friend</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +42,8 @@
             <a class="nav-link" aria-current="page" href="{{ url_for('dashboard') }}">Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Phone Book
             </a>
             <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{{url_for('find_a_friend')}}">Find a Friend</a></li>
@@ -104,8 +104,8 @@
     </thead>
     <tbody>
     <tr>
-        {% if not subjects %}
-{#          <h2>there are no posts matching </h2>#}
+      {% if not subjects %}
+        {#<h2>there are no posts matching </h2>#}
       {% endif %}
       {% if subjects %}
           <tr>
@@ -117,13 +117,13 @@
         </tr>
       {% endif %}
       {% if subjects %}
-          {%  for i in range(size) %}
-                <th scope="row">{{i + 1}}</th>
-                <td>{{subjects[i]}}</td>
-                <td>{{names[i]}}</td>
-                <td>{{schools[i]}}</td>
-                <td>{{contacts[i]}}</td>
-          {%  endfor %}
+        {%  for i in range(size) %}
+          <th scope="row">{{i + 1}}</th>
+          <td>{{subjects[i]}}</td>
+          <td>{{names[i]}}</td>
+          <td>{{schools[i]}}</td>
+          <td>{{contacts[i]}}</td>
+        {%  endfor %}
       {% endif %}
     </tr>
     </tbody>

@@ -190,13 +190,37 @@ def dashboard():
 def account_settings():
     """
     this is the page that makes the users account settings
+    Testing Branch
     """
 
-    for i in Person.query.filter_by(username=current_user.username):
-        username = i.username
-        email = i.email
-        password = i.password
-        university = i.university
+    i = Person.query.get(current_user.id)
+    username = i.username
+    email = i.email
+    password = i.password
+    university = i.university
+
+    if request.method == "POST":
+        if request.args["f"] == "f1":
+            username = request.form.get("username")
+            updated_username = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(username=username))
+            db.session.commit()
+        elif request.args["f"] == "f2":
+            university = request.form.get("university")
+            updated_university = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(university=university))
+            db.session.commit()
+        elif request.args["f"] == "f3":
+            password = request.form.get("password")
+            password2 = generate_password_hash(password, method="sha256")
+            updated_university = Person.query.filter_by(
+                username=current_user.username
+            ).update(dict(password=password2))
+            db.session.commit()
+
+        return redirect(url_for("logout"))
 
     return render_template(
         "account_settings.html",
