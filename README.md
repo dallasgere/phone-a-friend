@@ -7,8 +7,8 @@
 * URL is (https://github.com/dallasgere/phone-a-friend/pull/8)
 
 ## Dallas's pull requests
-* URL is (https://phone-a-friend.fly.dev/)
 * URL is (https://github.com/dallasgere/phone-a-friend/pull/4)
+* URL is (https://github.com/dallasgere/phone-a-friend/pull/7)
 
 ## MVP Tasks
 * Build Flask App
