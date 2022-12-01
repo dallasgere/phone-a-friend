@@ -1,5 +1,14 @@
+# link to the github (https://github.com/dallasgere/phone-a-friend)
 # phone-a-friend
 ## URL is (https://phone-a-friend.fly.dev/)
+
+## Jonathon's pull requests
+* URL is (https://github.com/dallasgere/phone-a-friend/pull/6)
+* URL is (https://github.com/dallasgere/phone-a-friend/pull/8)
+
+## Dallas's pull requests
+* URL is (https://phone-a-friend.fly.dev/)
+* URL is (https://github.com/dallasgere/phone-a-friend/pull/4)
 
 ## MVP Tasks
 * Build Flask App
@@ -19,8 +28,6 @@
     
 * Find API to use 
 
-
-# link to the github (https://github.com/dallasgere/phone-a-friend)
 ## Non MVP tasks
 * Profile Pictures
 * School id
